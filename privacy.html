@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacybeleid — Islamica</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F5F3ED;
+      color: #1C1C1E;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(245,243,237,0.75);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1C1C1E; }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-brand span { font-weight: 800; font-size: 18px; }
+    nav a.back { font-size: 14px; font-weight: 600; color: #2a9d8f; text-decoration: none; }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    h1 {
+      font-size: 36px; font-weight: 900; margin-bottom: 8px; letter-spacing: -1px;
+    }
+    h1 span { color: #2a9d8f; }
+    .updated { font-size: 14px; color: rgba(28,28,30,0.45); margin-bottom: 40px; }
+    .intro {
+      font-size: 16px; color: rgba(28,28,30,0.65); line-height: 1.7; margin-bottom: 48px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    h2 {
+      font-size: 22px; font-weight: 800; margin-top: 48px; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 10px;
+      background: rgba(42,157,143,0.1); color: #2a9d8f;
+      font-size: 14px; font-weight: 800; flex-shrink: 0;
+    }
+    h3 { font-size: 16px; font-weight: 700; margin-top: 20px; margin-bottom: 8px; color: #2a9d8f; }
+    p, li {
+      font-size: 15px; color: rgba(28,28,30,0.7); line-height: 1.8;
+    }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .card {
+      background: #fff; border-radius: 16px; padding: 24px;
+      border: 1px solid rgba(0,0,0,0.06); margin-top: 16px; margin-bottom: 16px;
+    }
+    .card p { margin-bottom: 6px; }
+    .card a { color: #2a9d8f; text-decoration: none; font-weight: 600; }
+    .highlight {
+      background: rgba(42,157,143,0.06); border-left: 3px solid #2a9d8f;
+      padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0;
+    }
+    .highlight p { color: #1C1C1E; font-weight: 600; }
+    .contact-box {
+      background: #fff; border-radius: 20px; padding: 32px;
+      border: 1px solid rgba(0,0,0,0.06); margin-top: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .contact-row .label { font-size: 13px; color: rgba(28,28,30,0.45); font-weight: 600; min-width: 80px; }
+    .contact-row .value { font-size: 15px; font-weight: 700; }
+    .contact-row a { color: #2a9d8f; text-decoration: none; }
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      color: rgba(28,28,30,0.4); font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 40px 20px 80px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Islamica">
+      <span>Islamica</span>
+    </a>
+    <a href="/" class="back">Terug naar home</a>
+  </nav>
+
+  <div class="container">
+    <h1>Privacy<span>beleid</span></h1>
+    <p class="updated">Laatst bijgewerkt: 30 maart 2026</p>
+    <p class="intro">Dit privacybeleid beschrijft hoe Islamica ("wij", "ons", "de app") persoonlijke gegevens verzamelt, gebruikt en beschermt wanneer u de app gebruikt.</p>
+
+    <h2><span class="num">1</span> Welke gegevens verzamelen wij</h2>
+
+    <h3>1.1 Accountgegevens</h3>
+    <ul>
+      <li>E-mailadres (voor registratie en inloggen)</li>
+      <li>Wachtwoord (versleuteld opgeslagen via Supabase Auth)</li>
+      <li>Naam (weergavenaam in de app)</li>
+      <li>Profielfoto en omslagfoto (optioneel)</li>
+      <li>Telefoonnummer (optioneel)</li>
+      <li>Biografie (optioneel)</li>
+      <li>Accounttype (moskee-lid of spreker)</li>
+    </ul>
+
+    <h3>1.2 Locatiegegevens</h3>
+    <ul>
+      <li>Uw locatie wordt gevraagd om nabije moskeeën te tonen, afstand te berekenen en looproutes te plannen</li>
+      <li>Locatie wordt ALLEEN gebruikt wanneer u de app actief gebruikt</li>
+      <li>Wij slaan uw locatiegeschiedenis NIET op op onze servers</li>
+    </ul>
+
+    <h3>1.3 Gezondheids-/Bewegingsgegevens</h3>
+    <ul>
+      <li>Stappenteller via de sensor van uw telefoon (Pedometer)</li>
+      <li>Lichaamslengte (optioneel, voor nauwkeurigere stapberekening)</li>
+      <li>Wandelgeschiedenis naar moskeeën (stappen, afstand, duur)</li>
+    </ul>
+
+    <h3>1.4 Gebruiksgegevens</h3>
+    <ul>
+      <li>Hassanaat (spirituele punten): gebed, moskeebezoek, Quran, dhikr, sadaqah</li>
+      <li>Tasbih teller (dagelijks totaal)</li>
+      <li>Azkar voortgang (ochtend/avond smeekbeden)</li>
+      <li>Gebed streak (dagelijkse gebeden bijhouden)</li>
+      <li>Mushaf voortgang (laatst gelezen pagina)</li>
+      <li>Ramadan data (vasten tracker, doelen)</li>
+      <li>Hadith favorieten</li>
+      <li>Opgeslagen/bewaarde activiteiten</li>
+      <li>Gevolgde moskeeën en personen</li>
+    </ul>
+    <div class="highlight">
+      <p>Deze gegevens worden opgeslagen in uw beveiligde Supabase account, beschermd met Row Level Security.</p>
+    </div>
+
+    <h3>1.5 Door u geplaatste inhoud</h3>
+    <ul>
+      <li>Activiteiten, lezingen en aankondigingen (als beheerder/spreker)</li>
+      <li>Foto's en video's geüpload bij moskeeën</li>
+      <li>Meldingen verstuurd naar beheerders</li>
+    </ul>
+
+    <h2><span class="num">2</span> Hoe gebruiken wij uw gegevens</h2>
+    <p>Wij gebruiken uw gegevens uitsluitend voor:</p>
+    <ul>
+      <li>Het aanbieden van de app-functionaliteit (gebedstijden, moskee-informatie)</li>
+      <li>Het tonen van nabije moskeeën op basis van uw locatie</li>
+      <li>Het bijhouden van uw persoonlijke voortgang (hassanaat, stappen, azkar)</li>
+      <li>Het beheren van uw account en profiel</li>
+      <li>Het versturen van meldingen over activiteiten van gevolgde moskeeën</li>
+    </ul>
+    <div class="highlight">
+      <p>Wij gebruiken uw gegevens NIET voor advertenties, marketing, verkoop aan derden of tracking buiten de app.</p>
+    </div>
+
+    <h2><span class="num">3</span> Diensten van derden</h2>
+
+    <div class="card">
+      <h3>Supabase (database & authenticatie)</h3>
+      <p>Slaat accountgegevens, profielen, activiteiten en gebruikersvoortgang op</p>
+      <p>Servers in de EU</p>
+      <p><a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Mawaqit API (gebedstijden)</h3>
+      <p>Ontvangt locatiecoördinaten of zoekopdrachten voor moskeeën</p>
+      <p><a href="https://mawaqit.net/en/privacy-policy">mawaqit.net/privacy-policy</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Open-Meteo API (weer)</h3>
+      <p>Ontvangt coördinaten van de moskee (NIET uw persoonlijke locatie)</p>
+      <p>Gratis en open-source, geen persoonsgegevens</p>
+    </div>
+
+    <div class="card">
+      <h3>Mollie (betalingen/donaties)</h3>
+      <p>Wordt ALLEEN gebruikt als u vrijwillig doneert. Wij ontvangen GEEN betalingsgegevens.</p>
+      <p><a href="https://www.mollie.com/privacy">mollie.com/privacy</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Google Places API (halal spots)</h3>
+      <p>Zoekt halal restaurants in de buurt op basis van uw locatie</p>
+      <p><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    </div>
+
+    <h2><span class="num">4</span> Gegevensopslag</h2>
+
+    <h3>Op uw apparaat</h3>
+    <ul>
+      <li>Profielfoto cache (lokale kopie)</li>
+      <li>Sessie-identificatie voor bezoekerstelling</li>
+      <li>Gastgebruiker voorkeuren</li>
+    </ul>
+    <p>Deze gegevens verlaten uw apparaat niet.</p>
+
+    <h3>In de cloud (Supabase)</h3>
+    <ul>
+      <li>Accountgegevens en profiel</li>
+      <li>Activiteiten en aankondigingen</li>
+      <li>Profielfoto's en media</li>
+      <li>Volgrelaties</li>
+      <li>Alle gebruikersvoortgang (hassanaat, gebeden, stappen, tasbih, azkar, Quran, Ramadan, hadith, bewaarde activiteiten)</li>
+    </ul>
+    <div class="highlight">
+      <p>Beveiligd met Row Level Security — alleen uw eigen data is toegankelijk. Opgeslagen in beveiligde EU-servers met versleuteling.</p>
+    </div>
+
+    <h2><span class="num">5</span> Toestemmingen</h2>
+    <ul>
+      <li><strong>Locatie</strong> — om nabije moskeeën te vinden en afstand te berekenen</li>
+      <li><strong>Camera/Fotobibliotheek</strong> — om profiel- en moskeefoto's te uploaden</li>
+      <li><strong>Stappenteller</strong> — om uw stappen naar de moskee te tellen</li>
+      <li><strong>Meldingen</strong> — om u te herinneren aan gebedstijden en activiteiten</li>
+    </ul>
+    <p style="margin-top: 12px;">Alle toestemmingen zijn optioneel. De app werkt ook zonder, maar met beperkte functionaliteit.</p>
+
+    <h2><span class="num">6</span> Beveiliging</h2>
+    <ul>
+      <li>Wachtwoorden worden versleuteld opgeslagen (Supabase Auth met bcrypt)</li>
+      <li>Alle communicatie verloopt via HTTPS</li>
+      <li>Lokale gegevens zijn beschermd door de beveiliging van uw apparaat</li>
+      <li>Gebruikersdata beveiligd met Supabase Row Level Security</li>
+    </ul>
+
+    <h2><span class="num">7</span> Kinderen</h2>
+    <p>De app is geschikt voor alle leeftijden. Wij verzamelen niet bewust persoonsgegevens van kinderen onder de 16 jaar zonder toestemming van een ouder of voogd.</p>
+
+    <h2><span class="num">8</span> Uw rechten (AVG/GDPR)</h2>
+    <p>U heeft het recht om:</p>
+    <ul>
+      <li>Uw gegevens in te zien (via uw profiel in de app)</li>
+      <li>Uw gegevens te corrigeren (via profiel bewerken)</li>
+      <li>Uw account en alle gegevens te verwijderen</li>
+      <li>Een kopie van uw gegevens op te vragen</li>
+      <li>Bezwaar te maken tegen verwerking</li>
+    </ul>
+
+    <h2><span class="num">9</span> Wijzigingen</h2>
+    <p>Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. Bij belangrijke wijzigingen informeren wij u via de app.</p>
+
+    <h2><span class="num">10</span> Contact</h2>
+    <p>Voor vragen over dit privacybeleid of uw gegevens:</p>
+    <div class="contact-box">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <span class="value"><a href="mailto:brahim@islamica.tech">brahim@islamica.tech</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Telefoon</span>
+        <span class="value"><a href="tel:+31614887015">+31 6 14887015</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Website</span>
+        <span class="value"><a href="https://islamica.tech">islamica.tech</a></span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Islamica. Alle rechten voorbehouden.</p>
+  </footer>
+
+</body>
+</html>
