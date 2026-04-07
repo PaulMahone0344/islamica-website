@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Islamica</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F5F3ED;
+      color: #1C1C1E;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(245,243,237,0.75);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1C1C1E; }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-brand span { font-weight: 800; font-size: 18px; }
+    nav a.back { font-size: 14px; font-weight: 600; color: #2a9d8f; text-decoration: none; }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    h1 {
+      font-size: 36px; font-weight: 900; margin-bottom: 8px; letter-spacing: -1px;
+    }
+    h1 span { color: #2a9d8f; }
+    .updated { font-size: 14px; color: rgba(28,28,30,0.45); margin-bottom: 40px; }
+    .intro {
+      font-size: 16px; color: rgba(28,28,30,0.65); line-height: 1.7; margin-bottom: 48px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    h2 {
+      font-size: 22px; font-weight: 800; margin-top: 48px; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 10px;
+      background: rgba(42,157,143,0.1); color: #2a9d8f;
+      font-size: 14px; font-weight: 800; flex-shrink: 0;
+    }
+    h3 { font-size: 16px; font-weight: 700; margin-top: 20px; margin-bottom: 8px; color: #2a9d8f; }
+    p, li {
+      font-size: 15px; color: rgba(28,28,30,0.7); line-height: 1.8;
+    }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .card {
+      background: #fff; border-radius: 16px; padding: 24px;
+      border: 1px solid rgba(0,0,0,0.06); margin-top: 16px; margin-bottom: 16px;
+    }
+    .card p { margin-bottom: 6px; }
+    .card a { color: #2a9d8f; text-decoration: none; font-weight: 600; }
+    .highlight {
+      background: rgba(42,157,143,0.06); border-left: 3px solid #2a9d8f;
+      padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0;
+    }
+    .highlight p { color: #1C1C1E; font-weight: 600; }
+    .contact-box {
+      background: #fff; border-radius: 20px; padding: 32px;
+      border: 1px solid rgba(0,0,0,0.06); margin-top: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .contact-row .label { font-size: 13px; color: rgba(28,28,30,0.45); font-weight: 600; min-width: 80px; }
+    .contact-row .value { font-size: 15px; font-weight: 700; }
+    .contact-row a { color: #2a9d8f; text-decoration: none; }
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      color: rgba(28,28,30,0.4); font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 40px 20px 80px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-brand">
+      <img src="icon.png" alt="Islamica">
+      <span>Islamica</span>
+    </a>
+    <a href="/" class="back">Terug naar home</a>
+  </nav>
+
+  <div class="container">
+    <h1>Sup<span>port</span></h1>
+    <p class="updated">We helpen je graag verder</p>
+    <p class="intro">Heb je een vraag, suggestie of loop je tegen een probleem aan in de Islamica app? Neem contact met ons op — we reageren meestal binnen 24 uur.</p>
+
+    <h2><span class="num">1</span> Contact</h2>
+    <div class="contact-box">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <span class="value"><a href="mailto:brahim@islamica.tech">brahim@islamica.tech</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Telefoon</span>
+        <span class="value"><a href="tel:+31614887015">+31 6 14887015</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Website</span>
+        <span class="value"><a href="https://islamica.tech">islamica.tech</a></span>
+      </div>
+    </div>
+
+    <h2><span class="num">2</span> Veelgestelde vragen</h2>
+
+    <div class="card">
+      <h3>De app toont geen gebedstijden</h3>
+      <p>Controleer of je een moskee hebt gekozen via de moskee-kiezer op het thuisscherm. Geef de app locatietoegang om nabije moskeeën te vinden, of zoek handmatig op naam/stad.</p>
+    </div>
+
+    <div class="card">
+      <h3>Push notificaties komen niet binnen</h3>
+      <p>Ga naar Instellingen → Islamica → Meldingen en zet meldingen aan. Volg vervolgens minimaal één moskee om aankondigingen te ontvangen.</p>
+    </div>
+
+    <div class="card">
+      <h3>Quran AI herkent mijn recitatie niet goed</h3>
+      <p>Recitiëer in een rustige omgeving en houd de telefoon dichtbij je mond. De microfoon-toestemming moet aanstaan. Bij blijvende problemen — laat het ons weten met de soera waar het mis ging.</p>
+    </div>
+
+    <div class="card">
+      <h3>Hoe word ik beheerder van mijn moskee?</h3>
+      <p>Vraag je moskee om een 6-letter beheerderscode aan te vragen via brahim@islamica.tech. Deze code voer je in onder Profiel → Beheerder worden.</p>
+    </div>
+
+    <div class="card">
+      <h3>Hoe verwijder ik mijn account?</h3>
+      <p>Ga naar Profiel → Instellingen → Account verwijderen. Al je gegevens worden permanent verwijderd uit onze database. Of stuur ons een mail en wij verwijderen het handmatig.</p>
+    </div>
+
+    <h2><span class="num">3</span> Een bug melden</h2>
+    <p>Help ons de app verbeteren door bugs te melden met de volgende informatie:</p>
+    <ul>
+      <li>Welk apparaat en iOS/Android versie</li>
+      <li>Versie van de Islamica app (zie Profiel → Over)</li>
+      <li>Wat je deed toen het probleem optrad</li>
+      <li>Een schermafbeelding of video als dat kan</li>
+    </ul>
+    <p style="margin-top: 12px;">Stuur dit naar <a href="mailto:brahim@islamica.tech" style="color: #2a9d8f; font-weight: 600; text-decoration: none;">brahim@islamica.tech</a>.</p>
+
+    <h2><span class="num">4</span> Suggesties &amp; feedback</h2>
+    <p>Islamica is gebouwd voor en door de oemmah. Heb je een idee voor een nieuwe functie, een dua die we missen, of een verbetering? We horen het graag.</p>
+    <div class="highlight">
+      <p>Fi sabilillah — we maken deze app zonder winstoogmerk en gebruiken al je feedback om de app beter te maken voor de hele gemeenschap.</p>
+    </div>
+
+    <h2><span class="num">5</span> Privacy</h2>
+    <p>Voor vragen over hoe wij omgaan met je gegevens, lees ons <a href="/privacy" style="color: #2a9d8f; font-weight: 600; text-decoration: none;">privacybeleid</a>.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Islamica. Alle rechten voorbehouden.</p>
+  </footer>
+
+</body>
+</html>
