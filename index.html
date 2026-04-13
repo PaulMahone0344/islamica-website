@@ -390,8 +390,23 @@
 
     .f-icon i { font-size: 26px; }
 
-    .f-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-    .f-card p { font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+    .f-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; position: relative; z-index: 1; }
+    .f-card p { font-size: 14px; color: var(--text-sub); line-height: 1.7; position: relative; z-index: 1; }
+    .f-card .f-icon { position: relative; z-index: 1; }
+
+    .f-card[data-bg] {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .f-card[data-bg]::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,11,26,0.75) 0%, rgba(7,11,26,0.9) 100%);
+      border-radius: 24px;
+      z-index: 0;
+    }
 
     /* Big feature */
     .f-card.big {
@@ -727,12 +742,12 @@
         </div>
         <div class="f-visual"><img src="images/moskee-hero-bg.jpg" alt="Moskee"></div>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/quran-luisteren-bg.jpg');">
         <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-book-open-text" style="color: #B8860B;"></i></div>
         <h3>Quran</h3>
         <p>114 soera's met 14 reciteurs, woord-voor-woord highlighting, Mushaf viewer (604 pagina's, pinch-to-zoom, RTL) en hassanaat per gelezen woord.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/prayer-fajr.png');">
         <div class="f-icon" style="background: rgba(139,92,246,0.1);"><i class="ph-fill ph-hands-praying" style="color: #8B5CF6;"></i></div>
         <h3>Dua's & Azkar</h3>
         <p>137 smeekbeden in 43 categorieën uit Hisnul Muslim. Ochtend- en avondazkar met teller, haptic feedback en hassanaat koppeling.</p>
@@ -745,12 +760,12 @@
         </div>
         <div class="f-visual"><img src="images/quran-luisteren-bg.jpg" alt="Quran AI"></div>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/prayer-isha.png');">
         <div class="f-icon" style="background: rgba(216,194,122,0.1);"><i class="ph-fill ph-book-bookmark" style="color: #D8C27A;"></i></div>
         <h3>Hadith AI</h3>
         <p>Zoek in 7.360 Sahih Muslim ahadith met je stem. Arabisch reciteren of Nederlands beschrijven — de app vindt de juiste hadith.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/Fajr.png');">
         <div class="f-icon" style="background: rgba(34,197,94,0.1);"><i class="ph-fill ph-star-four" style="color: #22C55E;"></i></div>
         <h3>Tasbih & Hassanaat</h3>
         <p>Digitale tasbih met haptic feedback. Verdien hassanaat voor gebed, Quran, dhikr, moskeebezoek en sadaqah.</p>
@@ -763,40 +778,35 @@
         </div>
         <div class="f-visual"><img src="images/prayer-maghrib.png" alt="Live Vertaling"></div>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/prayer-maghrib.png');">
         <div class="f-icon" style="background: rgba(232,113,26,0.1);"><i class="ph-fill ph-compass" style="color: #E8711A;"></i></div>
         <h3>Qiblah & Stappen</h3>
         <p>Qiblah kompas met glow-animatie. Stappenteller naar de moskee via pedometer + GPS route.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/moskee-default.jpg');">
         <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-chart-line-up" style="color: #B8860B;"></i></div>
         <h3>Stats Dashboard</h3>
         <p>Apple Fitness-stijl activity rings. Gebed streak tracker, hassanaat per categorie, week charts en donut grafieken.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/mosque-skyline.png');">
         <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-users-three" style="color: #2a9d8f;"></i></div>
         <h3>Moskee Volgsysteem</h3>
         <p>Volg tot 10 moskeeën. Instagram-stijl stories, push notificaties bij activiteiten, en automatisch gebedstijden van je actieve moskee.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/prayer-isha.png');">
         <div class="f-icon" style="background: rgba(139,92,246,0.1);"><i class="ph-fill ph-moon-stars" style="color: #8B5CF6;"></i></div>
         <h3>Ramadan Modus</h3>
         <p>Suhoor & Iftar countdown, vasten tracker en Ramadan doelen bijhouden.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/Fajr.png');">
         <div class="f-icon" style="background: rgba(220,38,38,0.1);"><i class="ph-fill ph-fire" style="color: #DC2626;"></i></div>
         <h3>Gebed Streak</h3>
         <p>Markeer 5 gebeden per dag, houd je streak bij en bekijk je week-overzicht.</p>
       </div>
-      <div class="f-card reveal">
+      <div class="f-card reveal" data-bg style="background-image: url('images/moskee-hero-bg.jpg');">
         <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-calendar-dots" style="color: #B8860B;"></i></div>
         <h3>Hijri Kalender</h3>
         <p>Islamitische kalender met alle feestdagen en evenementen.</p>
-      </div>
-      <div class="f-card reveal">
-        <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-video-camera" style="color: #2a9d8f;"></i></div>
-        <h3>Makkah & Madinah Live</h3>
-        <p>Live video streams van de Heilige Moskeeën, direct in de app.</p>
       </div>
     </div>
   </section>
