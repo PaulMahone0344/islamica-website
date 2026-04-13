@@ -65,7 +65,7 @@
       color: #fff;
     }
 
-    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; scale: 1.35; overflow: hidden; clip-path: circle(50%); }
     .nav-brand span { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; color: #fff; }
 
     .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -128,22 +128,29 @@
       position: relative;
       display: inline-block;
       margin-bottom: 40px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
     }
 
     .logo {
       width: 130px;
       height: 130px;
-      border-radius: 36px;
+      border-radius: 50%;
       position: relative;
       z-index: 1;
       box-shadow: 0 20px 60px var(--accent-glow);
       animation: logoFloat 4s ease-in-out infinite;
+      object-fit: cover;
+      transform-origin: center;
+      scale: 1.35;
     }
 
     .logo-ring {
       position: absolute;
       inset: -8px;
-      border-radius: 42px;
+      border-radius: 50%;
       border: 2px solid rgba(42,157,143,0.2);
       animation: ringPulse 3s ease-in-out infinite;
     }
@@ -392,6 +399,16 @@
       align-items: center;
       justify-content: center;
       font-size: 64px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .f-card.big .f-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      border-radius: 20px;
     }
 
     /* ─── Ayah ─── */
@@ -593,7 +610,7 @@
       margin-bottom: 16px;
     }
 
-    .footer-brand img { width: 28px; height: 28px; border-radius: 8px; }
+    .footer-brand img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; scale: 1.35; }
     .footer-brand span { font-weight: 800; font-size: 16px; color: #fff; }
 
     footer p { color: var(--text-sub); font-size: 13px; }
@@ -695,19 +712,32 @@
         <div>
           <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-mosque" style="color: #2a9d8f;"></i></div>
           <h3>Gebedstijden per Moskee</h3>
-          <p>Live gebedstijden met afteltimer voor je eigen moskee. Volg meerdere moskeeën, ontvang meldingen en bekijk de gebedsschema's. Altijd up-to-date via de Mawaqit API.</p>
+          <p>Live gebedstijden van 3.014 moskeeën met afteltimer en dynamische gradient achtergronden per gebed. PrayerProgressRing met glow-animatie. Offline berekening als fallback.</p>
         </div>
-        <div class="f-visual"><i class="ph-fill ph-mosque" style="color: var(--accent);"></i></div>
+        <div class="f-visual"><img src="images/moskee-hero-bg.jpg" alt="Moskee"></div>
       </div>
       <div class="f-card reveal">
         <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-book-open-text" style="color: #B8860B;"></i></div>
         <h3>Quran</h3>
-        <p>Volledige Quran met 14 reciteurs, woord-voor-woord highlighting, Mushaf viewer met 604 pagina's en hassanaat tracking.</p>
+        <p>114 soera's met 14 reciteurs, woord-voor-woord highlighting, Mushaf viewer (604 pagina's, pinch-to-zoom, RTL) en hassanaat per gelezen woord.</p>
       </div>
       <div class="f-card reveal">
         <div class="f-icon" style="background: rgba(139,92,246,0.1);"><i class="ph-fill ph-hands-praying" style="color: #8B5CF6;"></i></div>
         <h3>Dua's & Azkar</h3>
-        <p>137 smeekbeden in 43 categorieën uit Hisnul Muslim. Ochtend- en avondazkar met teller en voortgang.</p>
+        <p>137 smeekbeden in 43 categorieën uit Hisnul Muslim. Ochtend- en avondazkar met teller, haptic feedback en hassanaat koppeling.</p>
+      </div>
+      <div class="f-card big reveal">
+        <div>
+          <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-microphone" style="color: #2a9d8f;"></i></div>
+          <h3>Quran AI — Tarteel stijl</h3>
+          <p>Reciteer hardop en de app herkent het vers in ~2 seconden. 4 modi: zoek vers, oefen met tekst (tajweed kleuren), uit hoofd en volg mee met live woord highlighting. Spaced repetition, fouten opslag en coaching tips.</p>
+        </div>
+        <div class="f-visual"><img src="images/quran-luisteren-bg.jpg" alt="Quran AI"></div>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(216,194,122,0.1);"><i class="ph-fill ph-book-bookmark" style="color: #D8C27A;"></i></div>
+        <h3>Hadith AI</h3>
+        <p>Zoek in 7.360 Sahih Muslim ahadith met je stem. Arabisch reciteren of Nederlands beschrijven — de app vindt de juiste hadith.</p>
       </div>
       <div class="f-card reveal">
         <div class="f-icon" style="background: rgba(34,197,94,0.1);"><i class="ph-fill ph-star-four" style="color: #22C55E;"></i></div>
@@ -716,44 +746,46 @@
       </div>
       <div class="f-card big reveal">
         <div>
-          <div class="f-icon" style="background: rgba(232,113,26,0.1);"><i class="ph-fill ph-compass" style="color: #E8711A;"></i></div>
-          <h3>Qiblah, Stappen & Halal Spots</h3>
-          <p>Vind de Qiblah richting, tel je stappen naar de moskee met live pedometer en ontdek halal restaurants in de buurt met reviews en routebeschrijving.</p>
+          <div class="f-icon" style="background: rgba(34,197,94,0.1);"><i class="ph-fill ph-broadcast" style="color: #22C55E;"></i></div>
+          <h3>Live Khutbah Vertaling</h3>
+          <p>De imam spreekt Arabisch, de app vertaalt live naar Nederlands, Engels, Turks of Frans. Via Whisper + GPT-4o-mini met ~6 seconden vertraging. Beheerders starten, volgers lezen mee.</p>
         </div>
-        <div class="f-visual"><i class="ph-fill ph-compass" style="color: var(--accent);"></i></div>
+        <div class="f-visual"><img src="images/prayer-maghrib.png" alt="Live Vertaling"></div>
       </div>
       <div class="f-card reveal">
-        <div class="f-icon" style="background: rgba(139,92,246,0.1);"><i class="ph-fill ph-moon-stars" style="color: #8B5CF6;"></i></div>
-        <h3>Ramadan Modus</h3>
-        <p>Suhoor & Iftar countdown, vasten tracker met 30-dagen grid en Ramadan doelen bijhouden.</p>
-      </div>
-      <div class="f-card reveal">
-        <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-calendar-dots" style="color: #B8860B;"></i></div>
-        <h3>Hijri Kalender</h3>
-        <p>Islamitische kalender met alle belangrijke datums en evenementen het hele jaar door.</p>
-      </div>
-      <div class="f-card reveal">
-        <div class="f-icon" style="background: rgba(220,38,38,0.1);"><i class="ph-fill ph-fire" style="color: #DC2626;"></i></div>
-        <h3>Gebed Streak</h3>
-        <p>Vink je 5 dagelijkse gebeden af. Houd je streak bij en bekijk je week-overzicht met statistieken.</p>
-      </div>
-      <div class="f-card big reveal">
-        <div>
-          <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-microphone" style="color: #2a9d8f;"></i></div>
-          <h3>Quran AI — Tarteel stijl</h3>
-          <p>Reciteer hardop en de app herkent welk vers je leest. Oefen uit hoofd met live woord-voor-woord highlighting, spaced repetition voor zwakke verzen en je eigen "mijn fouten" lijst om verbeterpunten te oefenen.</p>
-        </div>
-        <div class="f-visual"><i class="ph-fill ph-microphone" style="color: var(--accent);"></i></div>
-      </div>
-      <div class="f-card reveal">
-        <div class="f-icon" style="background: rgba(34,197,94,0.1);"><i class="ph-fill ph-broadcast" style="color: #22C55E;"></i></div>
-        <h3>Live Khutbah Vertaling</h3>
-        <p>Beheerders zenden de khutbah live uit in het Arabisch en volgers ontvangen real-time vertaling naar Nederlands, Engels, Turks of Frans.</p>
+        <div class="f-icon" style="background: rgba(232,113,26,0.1);"><i class="ph-fill ph-compass" style="color: #E8711A;"></i></div>
+        <h3>Qiblah & Stappen</h3>
+        <p>Qiblah kompas met glow-animatie. Stappenteller naar de moskee via pedometer + GPS route.</p>
       </div>
       <div class="f-card reveal">
         <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-chart-line-up" style="color: #B8860B;"></i></div>
         <h3>Stats Dashboard</h3>
-        <p>Apple Fitness-stijl activity rings voor gebed, moskee, Quran, dhikr en sadaqah. Bekijk je voortgang en groei in spirituele gewoontes.</p>
+        <p>Apple Fitness-stijl activity rings. Gebed streak tracker, hassanaat per categorie, week charts en donut grafieken.</p>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-users-three" style="color: #2a9d8f;"></i></div>
+        <h3>Moskee Volgsysteem</h3>
+        <p>Volg tot 10 moskeeën. Instagram-stijl stories, push notificaties bij activiteiten, en automatisch gebedstijden van je actieve moskee.</p>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(139,92,246,0.1);"><i class="ph-fill ph-moon-stars" style="color: #8B5CF6;"></i></div>
+        <h3>Ramadan Modus</h3>
+        <p>Suhoor & Iftar countdown, vasten tracker en Ramadan doelen bijhouden.</p>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(220,38,38,0.1);"><i class="ph-fill ph-fire" style="color: #DC2626;"></i></div>
+        <h3>Gebed Streak</h3>
+        <p>Markeer 5 gebeden per dag, houd je streak bij en bekijk je week-overzicht.</p>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(184,134,11,0.1);"><i class="ph-fill ph-calendar-dots" style="color: #B8860B;"></i></div>
+        <h3>Hijri Kalender</h3>
+        <p>Islamitische kalender met alle feestdagen en evenementen.</p>
+      </div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: rgba(42,157,143,0.1);"><i class="ph-fill ph-video-camera" style="color: #2a9d8f;"></i></div>
+        <h3>Makkah & Madinah Live</h3>
+        <p>Live video streams van de Heilige Moskeeën, direct in de app.</p>
       </div>
     </div>
   </section>
