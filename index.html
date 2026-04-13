@@ -32,11 +32,29 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 50%, #0E1530 100%);
-      background-attachment: fixed;
+      background: var(--bg-deep);
       color: var(--text);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('images/moskee-hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.15;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,11,26,0.7) 0%, rgba(7,11,26,0.85) 40%, rgba(7,11,26,0.95) 100%);
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* ─── Navbar ─── */
@@ -65,7 +83,7 @@
       color: #fff;
     }
 
-    .nav-brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; scale: 1.35; overflow: hidden; clip-path: circle(50%); }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
     .nav-brand span { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; color: #fff; }
 
     .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -128,29 +146,22 @@
       position: relative;
       display: inline-block;
       margin-bottom: 40px;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      overflow: hidden;
     }
 
     .logo {
       width: 130px;
       height: 130px;
-      border-radius: 50%;
+      border-radius: 36px;
       position: relative;
       z-index: 1;
       box-shadow: 0 20px 60px var(--accent-glow);
       animation: logoFloat 4s ease-in-out infinite;
-      object-fit: cover;
-      transform-origin: center;
-      scale: 1.35;
     }
 
     .logo-ring {
       position: absolute;
       inset: -8px;
-      border-radius: 50%;
+      border-radius: 42px;
       border: 2px solid rgba(42,157,143,0.2);
       animation: ringPulse 3s ease-in-out infinite;
     }
@@ -610,7 +621,7 @@
       margin-bottom: 16px;
     }
 
-    .footer-brand img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; scale: 1.35; }
+    .footer-brand img { width: 28px; height: 28px; border-radius: 8px; }
     .footer-brand span { font-weight: 800; font-size: 16px; color: #fff; }
 
     footer p { color: var(--text-sub); font-size: 13px; }
