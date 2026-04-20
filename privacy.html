@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,103 +7,254 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #050607; }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
-      background: #F5F3ED;
-      color: #1C1C1E;
+      color: #e5e7eb;
       -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.011em;
     }
+
+    .grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-glow {
+      background: radial-gradient(900px circle at 50% 0%, rgba(34,197,94,0.25), rgba(34,197,94,0.05) 35%, transparent 60%);
+      filter: blur(40px);
+    }
+    .noise {
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+    }
+    .bg-layers { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    .bg-layers > div { position: absolute; inset: 0; }
+    .bg-layers .glow { top: -200px; left: 50%; transform: translateX(-50%); width: 1200px; height: 800px; }
+
     nav {
       position: sticky; top: 0; z-index: 100;
-      padding: 16px 32px;
+      padding: 14px 24px;
       display: flex; align-items: center; justify-content: space-between;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      background: rgba(245,243,237,0.75);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: rgba(5,6,7,0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1C1C1E; }
-    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
-    .nav-brand span { font-weight: 800; font-size: 18px; }
-    nav a.back { font-size: 14px; font-weight: 600; color: #2a9d8f; text-decoration: none; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .nav-brand img {
+      width: 34px; height: 34px; border-radius: 9px;
+      filter: drop-shadow(0 0 20px rgba(34,197,94,0.25));
+    }
+    .nav-brand span { font-weight: 700; font-size: 16px; letter-spacing: -0.3px; }
+    nav a.back {
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a.back:hover { color: #fff; }
+
     .container {
       max-width: 760px;
       margin: 0 auto;
-      padding: 60px 24px 100px;
+      padding: 80px 24px 120px;
+      position: relative;
     }
+
+    .dua {
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem;
+      direction: rtl;
+      text-align: left;
+      background: linear-gradient(135deg, #bef264, #86efac 50%, #4ade80);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.85;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: 14px;
+    }
+
     h1 {
-      font-size: 36px; font-weight: 900; margin-bottom: 8px; letter-spacing: -1px;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #bbf7d0 40%, #4ade80 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    h1 span { color: #2a9d8f; }
-    .updated { font-size: 14px; color: rgba(28,28,30,0.45); margin-bottom: 40px; }
+
+    .updated {
+      font-size: 13px;
+      color: rgba(229,231,235,0.4);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+
     .intro {
-      font-size: 16px; color: rgba(28,28,30,0.65); line-height: 1.7; margin-bottom: 48px;
-      padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 17px;
+      color: rgba(229,231,235,0.62);
+      line-height: 1.7;
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+
     h2 {
-      font-size: 22px; font-weight: 800; margin-top: 48px; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 12px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+      color: #fff;
     }
     h2 .num {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px; border-radius: 10px;
-      background: rgba(42,157,143,0.1); color: #2a9d8f;
-      font-size: 14px; font-weight: 800; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 9px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      color: #4ade80;
+      font-size: 13px; font-weight: 800;
+      flex-shrink: 0;
     }
-    h3 { font-size: 16px; font-weight: 700; margin-top: 20px; margin-bottom: 8px; color: #2a9d8f; }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      color: #86efac;
+      letter-spacing: -0.2px;
+    }
+
     p, li {
-      font-size: 15px; color: rgba(28,28,30,0.7); line-height: 1.8;
+      font-size: 15px;
+      color: rgba(229,231,235,0.7);
+      line-height: 1.75;
     }
+
+    strong { color: #fff; font-weight: 600; }
+
     ul { padding-left: 20px; margin-bottom: 12px; }
     li { margin-bottom: 6px; }
+    li::marker { color: rgba(34,197,94,0.5); }
+
+    a { color: #4ade80; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    a:hover { color: #86efac; }
+
     .card {
-      background: #fff; border-radius: 16px; padding: 24px;
-      border: 1px solid rgba(0,0,0,0.06); margin-top: 16px; margin-bottom: 16px;
+      background: #0a0b0d;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      transition: border-color 0.25s;
     }
-    .card p { margin-bottom: 6px; }
-    .card a { color: #2a9d8f; text-decoration: none; font-weight: 600; }
+    .card:hover { border-color: rgba(34,197,94,0.25); }
+    .card h3 { margin-top: 0; color: #fff; font-size: 16px; }
+    .card p { margin-bottom: 4px; color: rgba(229,231,235,0.62); }
+    .card p:last-child { margin-bottom: 0; }
+
     .highlight {
-      background: rgba(42,157,143,0.06); border-left: 3px solid #2a9d8f;
-      padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 16px 0;
+      background: rgba(34,197,94,0.06);
+      border-left: 2px solid #22c55e;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
     }
-    .highlight p { color: #1C1C1E; font-weight: 600; }
+    .highlight p { color: #d1fae5; font-weight: 500; }
+
     .contact-box {
-      background: #fff; border-radius: 20px; padding: 32px;
-      border: 1px solid rgba(0,0,0,0.06); margin-top: 24px;
-      display: flex; flex-direction: column; gap: 12px;
+      background: #0a0b0d;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 28px;
+      margin-top: 24px;
+      display: flex; flex-direction: column; gap: 14px;
     }
     .contact-row {
       display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.2s;
     }
-    .contact-row .label { font-size: 13px; color: rgba(28,28,30,0.45); font-weight: 600; min-width: 80px; }
-    .contact-row .value { font-size: 15px; font-weight: 700; }
-    .contact-row a { color: #2a9d8f; text-decoration: none; }
+    .contact-row:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(34,197,94,0.2);
+    }
+    .contact-row .label {
+      font-size: 11px;
+      color: rgba(229,231,235,0.5);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      min-width: 86px;
+    }
+    .contact-row .value { font-size: 15px; font-weight: 600; color: #fff; }
+
     footer {
-      text-align: center; padding: 32px 24px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      color: rgba(28,28,30,0.4); font-size: 13px;
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(229,231,235,0.4);
+      font-size: 13px;
     }
+
+    ::selection { background: rgba(34,197,94,0.3); color: #fff; }
+
     @media (max-width: 600px) {
-      .container { padding: 40px 20px 80px; }
-      h1 { font-size: 28px; }
+      .container { padding: 50px 20px 80px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 20px; }
     }
   </style>
 </head>
 <body>
+
+  <div class="bg-layers">
+    <div class="grid-pattern"></div>
+    <div class="noise"></div>
+    <div class="hero-glow glow"></div>
+  </div>
 
   <nav>
     <a href="/" class="nav-brand">
       <img src="icon.png" alt="Islamica">
       <span>Islamica</span>
     </a>
-    <a href="/" class="back">Terug naar home</a>
+    <a href="/" class="back">← Terug naar home</a>
   </nav>
 
   <div class="container">
-    <h1>Privacy<span>beleid</span></h1>
-    <p class="updated">Laatst bijgewerkt: 30 maart 2026</p>
+    <p class="dua">بسم الله الرحمن الرحيم</p>
+    <span class="eyebrow">Juridisch</span>
+    <h1>Privacybeleid.</h1>
+    <p class="updated">Laatst bijgewerkt: 20 april 2026</p>
     <p class="intro">Dit privacybeleid beschrijft hoe Islamica ("wij", "ons", "de app") persoonlijke gegevens verzamelt, gebruikt en beschermt wanneer u de app gebruikt.</p>
 
     <h2><span class="num">1</span> Welke gegevens verzamelen wij</h2>
@@ -111,7 +262,7 @@
     <h3>1.1 Accountgegevens</h3>
     <ul>
       <li>E-mailadres (voor registratie en inloggen)</li>
-      <li>Wachtwoord (versleuteld opgeslagen via Supabase Auth)</li>
+      <li>Wachtwoord (versleuteld opgeslagen via PocketBase auth)</li>
       <li>Naam (weergavenaam in de app)</li>
       <li>Profielfoto en omslagfoto (optioneel)</li>
       <li>Telefoonnummer (optioneel)</li>
@@ -126,7 +277,7 @@
       <li>Wij slaan uw locatiegeschiedenis NIET op op onze servers</li>
     </ul>
 
-    <h3>1.3 Gezondheids-/Bewegingsgegevens</h3>
+    <h3>1.3 Gezondheids-/bewegingsgegevens</h3>
     <ul>
       <li>Stappenteller via de sensor van uw telefoon (Pedometer)</li>
       <li>Lichaamslengte (optioneel, voor nauwkeurigere stapberekening)</li>
@@ -146,7 +297,7 @@
       <li>Gevolgde moskeeën en personen</li>
     </ul>
     <div class="highlight">
-      <p>Deze gegevens worden opgeslagen in uw beveiligde Supabase account, beschermd met Row Level Security.</p>
+      <p>Deze gegevens worden opgeslagen in onze eigen PocketBase database op EU-servers, beveiligd met per-gebruiker toegangsregels.</p>
     </div>
 
     <h3>1.5 Door u geplaatste inhoud</h3>
@@ -154,16 +305,18 @@
       <li>Activiteiten, lezingen en aankondigingen (als beheerder/spreker)</li>
       <li>Foto's en video's geüpload bij moskeeën</li>
       <li>Meldingen verstuurd naar beheerders</li>
+      <li>Live khutbah audio (tijdens de stream, niet permanent opgeslagen)</li>
     </ul>
 
     <h2><span class="num">2</span> Hoe gebruiken wij uw gegevens</h2>
     <p>Wij gebruiken uw gegevens uitsluitend voor:</p>
     <ul>
-      <li>Het aanbieden van de app-functionaliteit (gebedstijden, moskee-informatie)</li>
+      <li>Het aanbieden van de app-functionaliteit (gebedstijden, moskee-informatie, Quran AI)</li>
       <li>Het tonen van nabije moskeeën op basis van uw locatie</li>
       <li>Het bijhouden van uw persoonlijke voortgang (hassanaat, stappen, azkar)</li>
       <li>Het beheren van uw account en profiel</li>
       <li>Het versturen van meldingen over activiteiten van gevolgde moskeeën</li>
+      <li>Het live vertalen van khutbah-audio naar Nederlands, Engels, Turks of Frans</li>
     </ul>
     <div class="highlight">
       <p>Wij gebruiken uw gegevens NIET voor advertenties, marketing, verkoop aan derden of tracking buiten de app.</p>
@@ -172,16 +325,23 @@
     <h2><span class="num">3</span> Diensten van derden</h2>
 
     <div class="card">
-      <h3>Supabase (database & authenticatie)</h3>
+      <h3>PocketBase op Hetzner (database &amp; authenticatie)</h3>
       <p>Slaat accountgegevens, profielen, activiteiten en gebruikersvoortgang op</p>
-      <p>Servers in de EU</p>
-      <p><a href="https://supabase.com/privacy">supabase.com/privacy</a></p>
+      <p>Eigen server in de EU (Duitsland)</p>
+      <p><a href="https://pocketbase.io">pocketbase.io</a></p>
     </div>
 
     <div class="card">
       <h3>Mawaqit API (gebedstijden)</h3>
       <p>Ontvangt locatiecoördinaten of zoekopdrachten voor moskeeën</p>
       <p><a href="https://mawaqit.net/en/privacy-policy">mawaqit.net/privacy-policy</a></p>
+    </div>
+
+    <div class="card">
+      <h3>OpenAI (Quran AI, Hadith AI, khutbah vertaling)</h3>
+      <p>Ontvangt audio-fragmenten (Whisper) en tekst (GPT-4o-mini) voor spraakherkenning en live vertaling</p>
+      <p>Audio wordt niet permanent opgeslagen; OpenAI gebruikt input niet voor training</p>
+      <p><a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a></p>
     </div>
 
     <div class="card">
@@ -209,10 +369,11 @@
       <li>Profielfoto cache (lokale kopie)</li>
       <li>Sessie-identificatie voor bezoekerstelling</li>
       <li>Gastgebruiker voorkeuren</li>
+      <li>Offline Mushaf pagina's (voor gebruik zonder internet)</li>
     </ul>
     <p>Deze gegevens verlaten uw apparaat niet.</p>
 
-    <h3>In de cloud (Supabase)</h3>
+    <h3>In onze cloud (PocketBase op Hetzner)</h3>
     <ul>
       <li>Accountgegevens en profiel</li>
       <li>Activiteiten en aankondigingen</li>
@@ -221,12 +382,13 @@
       <li>Alle gebruikersvoortgang (hassanaat, gebeden, stappen, tasbih, azkar, Quran, Ramadan, hadith, bewaarde activiteiten)</li>
     </ul>
     <div class="highlight">
-      <p>Beveiligd met Row Level Security — alleen uw eigen data is toegankelijk. Opgeslagen in beveiligde EU-servers met versleuteling.</p>
+      <p>Beveiligd met per-gebruiker toegangsregels — alleen uw eigen data is toegankelijk. Opgeslagen op onze eigen server in Duitsland (Hetzner) met versleutelde verbindingen.</p>
     </div>
 
     <h2><span class="num">5</span> Toestemmingen</h2>
     <ul>
       <li><strong>Locatie</strong> — om nabije moskeeën te vinden en afstand te berekenen</li>
+      <li><strong>Microfoon</strong> — voor Quran AI recitatie-herkenning en Hadith voice-search</li>
       <li><strong>Camera/Fotobibliotheek</strong> — om profiel- en moskeefoto's te uploaden</li>
       <li><strong>Stappenteller</strong> — om uw stappen naar de moskee te tellen</li>
       <li><strong>Meldingen</strong> — om u te herinneren aan gebedstijden en activiteiten</li>
@@ -235,10 +397,11 @@
 
     <h2><span class="num">6</span> Beveiliging</h2>
     <ul>
-      <li>Wachtwoorden worden versleuteld opgeslagen (Supabase Auth met bcrypt)</li>
+      <li>Wachtwoorden worden versleuteld opgeslagen (PocketBase auth met bcrypt)</li>
       <li>Alle communicatie verloopt via HTTPS</li>
       <li>Lokale gegevens zijn beschermd door de beveiliging van uw apparaat</li>
-      <li>Gebruikersdata beveiligd met Supabase Row Level Security</li>
+      <li>Gebruikersdata beveiligd met per-gebruiker toegangsregels op rij-niveau</li>
+      <li>EU-hosting (Hetzner Duitsland) met dagelijkse back-ups</li>
     </ul>
 
     <h2><span class="num">7</span> Kinderen</h2>
@@ -276,7 +439,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 Islamica. Alle rechten voorbehouden.</p>
+    <p>&copy; 2026 Islamica · Alle rechten voorbehouden</p>
   </footer>
 
 </body>
