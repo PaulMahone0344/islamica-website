@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamica Tarteel — AI Quran-coach voor je recitatie</title>
+  <meta name="description" content="Reciteer hardop en zie direct welke woorden je verkeerd uitspreekt. Per-woord feedback, mistake review en streak — gemaakt voor hifz en tajweed.">
+  <meta property="og:title" content="Islamica Tarteel — AI Quran-coach">
+  <meta property="og:description" content="Reciteer hardop en zie direct welke woorden je verkeerd uitspreekt.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://islamica.tech/tarteel/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #050607; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #e5e7eb;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.011em;
+      line-height: 1.65;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5,6,7,0.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .nav-brand img { width: 34px; height: 34px; border-radius: 9px; }
+    .nav-brand span { font-weight: 700; font-size: 16px; letter-spacing: -0.3px; }
+    nav .nav-links { display: flex; gap: 24px; align-items: center; }
+    nav .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    nav .nav-links a:hover { color: #fff; }
+    @media (max-width: 600px) { nav .nav-links a:not(.nav-cta) { display: none; } }
+
+    a.nav-cta {
+      padding: 8px 16px;
+      background: #5eead4;
+      color: #0f1c1c !important;
+      border-radius: 9px;
+      font-weight: 600;
+    }
+    a.nav-cta:hover { background: #99f6e4; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(closest-side, rgba(94,234,212,0.12), transparent);
+      pointer-events: none; z-index: -1;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(94,234,212,0.3);
+      background: rgba(94,234,212,0.08);
+      color: #5eead4;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    h1.hero-title {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #fff 0%, #a8a8a8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+    .hero-ctas {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .btn-primary {
+      background: #5eead4;
+      color: #0f1c1c;
+    }
+    .btn-primary:hover { background: #99f6e4; transform: translateY(-1px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .btn .badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+      padding: 2px 7px; border-radius: 100px;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      margin-left: 4px;
+    }
+    .btn-primary .badge { background: rgba(15,28,28,0.2); color: rgba(15,28,28,0.7); }
+
+    /* Mock screenshot */
+    .mock-wrap {
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 12px;
+      background: linear-gradient(180deg, rgba(94,234,212,0.15), rgba(94,234,212,0));
+      border-radius: 32px;
+      border: 1px solid rgba(94,234,212,0.2);
+    }
+    .mock-screen {
+      background: #0a1414;
+      border-radius: 22px;
+      padding: 24px 20px 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .mock-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mock-header .key { color: #5eead4; font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .mock-header .score {
+      padding: 4px 10px;
+      background: rgba(34,197,94,0.2);
+      color: #22c55e;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 100px;
+    }
+    .mock-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 28px;
+      line-height: 1.8;
+      text-align: right;
+      direction: rtl;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .mock-arabic .word { display: inline; padding: 2px 4px; border-radius: 4px; }
+    .mock-arabic .ok { color: #fff; }
+    .mock-arabic .bad { background: rgba(239,68,68,0.2); color: #fca5a5; }
+    .mock-arabic .miss { background: rgba(245,158,11,0.18); color: #fcd34d; }
+    .mock-legend {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+    }
+    .mock-legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .mock-legend .dot { width: 8px; height: 8px; border-radius: 4px; }
+
+    /* Features */
+    section.features {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-eyebrow {
+      text-align: center;
+      color: #5eead4;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h2.section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: rgba(255,255,255,0.55);
+      max-width: 600px;
+      margin: 0 auto 56px;
+      font-size: 16px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      padding: 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(94,234,212,0.3);
+      background: rgba(94,234,212,0.04);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(94,234,212,0.12);
+      color: #5eead4;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      font-size: 18px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .feature-card p {
+      font-size: 14px; line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* How it works */
+    section.steps {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .step {
+      position: relative;
+      padding-left: 28px;
+    }
+    .step-num {
+      position: absolute; left: 0; top: 2px;
+      width: 24px; height: 24px;
+      border-radius: 12px;
+      background: #5eead4;
+      color: #0f1c1c;
+      font-size: 13px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step h3 {
+      font-size: 16px; font-weight: 700; color: #fff;
+      margin-bottom: 6px;
+    }
+    .step p {
+      font-size: 14px; color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+    }
+
+    /* Download / coming soon */
+    section.cta {
+      max-width: 760px;
+      margin: 0 auto 100px;
+      padding: 60px 32px;
+      background: linear-gradient(180deg, rgba(94,234,212,0.08), rgba(94,234,212,0.02));
+      border: 1px solid rgba(94,234,212,0.2);
+      border-radius: 24px;
+      text-align: center;
+    }
+    section.cta h2 {
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    section.cta p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .store-row {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .store-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 14px; font-weight: 600;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    .store-btn .label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
+    .store-btn .label .small { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .store-btn .icon { font-size: 22px; }
+
+    footer {
+      padding: 40px 24px 32px;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #5eead4; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-brand">
+      <img src="/icon.png" alt="Islamica">
+      <span>Islamica Tarteel</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">Hoe werkt het</a>
+      <a href="/tarteel/privacy">Privacy</a>
+      <a href="#download" class="nav-cta">Binnenkort</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="hero-eyebrow">AI Quran-coach</span>
+    <h1 class="hero-title">Reciteer hardop.<br>Zie direct waar je struikelt.</h1>
+    <p class="hero-sub">
+      Tarteel luistert mee terwijl je reciteert en kleurt elk woord
+      — correct, fout, gemist of onzeker — zodat je weet waar je moet oefenen.
+      Geen leraar nodig.
+    </p>
+    <div class="hero-ctas">
+      <a href="#download" class="btn btn-primary">
+        Probeer Tarteel <span class="badge">BÈTA</span>
+      </a>
+      <a href="#features" class="btn btn-ghost">Bekijk features →</a>
+    </div>
+
+    <div class="mock-wrap">
+      <div class="mock-screen">
+        <div class="mock-header">
+          <span class="key">AL-FATIHAH · 2</span>
+          <span class="score">87%</span>
+        </div>
+        <p class="mock-arabic">
+          <span class="word ok">ٱلْحَمْدُ</span>
+          <span class="word ok">لِلَّهِ</span>
+          <span class="word bad">رَبِّ</span>
+          <span class="word ok">ٱلْعَـٰلَمِينَ</span>
+        </p>
+        <div class="mock-legend">
+          <span><span class="dot" style="background:#22c55e"></span>correct</span>
+          <span><span class="dot" style="background:#ef4444"></span>fout</span>
+          <span><span class="dot" style="background:#f59e0b"></span>gemist</span>
+          <span><span class="dot" style="background:rgba(255,255,255,0.4)"></span>onzeker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <p class="section-eyebrow">Waarom Tarteel</p>
+    <h2 class="section-title">Niet zomaar een Quran-app</h2>
+    <p class="section-sub">
+      De meeste apps laten je luisteren of lezen. Tarteel laat je
+      <em>reciteren</em> — en geeft per woord feedback.
+    </p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3>Per-woord feedback</h3>
+        <p>
+          Elk woord wordt gekleurd: correct, fout, gemist, tashkeel-fout
+          of onzeker. Tap op een fout woord om de juiste uitspraak te horen.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">↻</div>
+        <h3>Mistake review</h3>
+        <p>
+          Je fouten worden onthouden. Doe dagelijks een korte review-sessie
+          van precies de woorden die je vaak verkeerd zegt.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">▲</div>
+        <h3>Streak &amp; progressie</h3>
+        <p>
+          Dagelijkse streak, hifz-tracker, statistieken. Zie hoe je
+          vooruitgaat en blijf consistent — ook met dagelijkse herinneringen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" id="how">
+    <p class="section-eyebrow">Hoe werkt het</p>
+    <h2 class="section-title">In drie stappen</h2>
+    <div class="step-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Kies een vers</h3>
+        <p>Open een surah, scroll naar de ayah die je wilt oefenen, en tap de microfoon.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Reciteer hardop</h3>
+        <p>Spreek de ayah uit zoals je hem kent. Tarteel transcribeert via Whisper en vergelijkt woord-voor-woord.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Zie je fouten</h3>
+        <p>Direct visueel: groen, rood, oranje. Bewaar je opname in Riwayat, of pak je fouten aan in de review-modus.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="download">
+    <h2>Binnenkort beschikbaar</h2>
+    <p>
+      Tarteel zit in de laatste fase voor de App Store. Wil je als
+      eerste de bèta proberen? Stuur een mail en we sturen je een TestFlight-uitnodiging.
+    </p>
+    <div class="store-row">
+      <a href="mailto:belfenomeno@gmail.com?subject=Tarteel%20b%C3%A8ta-uitnodiging" class="store-btn">
+        <span class="icon">✉</span>
+        <span class="label">
+          <span class="small">iOS bèta</span>
+          <span>Vraag uitnodiging aan</span>
+        </span>
+      </a>
+      <a href="mailto:belfenomeno@gmail.com?subject=Tarteel%20Android%20bericht" class="store-btn">
+        <span class="icon">▶</span>
+        <span class="label">
+          <span class="small">Android</span>
+          <span>Houd me op de hoogte</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Islamica · <a href="/tarteel/privacy">Privacybeleid</a> · <a href="/tarteel/terms">Voorwaarden</a> · <a href="mailto:belfenomeno@gmail.com">Contact</a>
+  </footer>
+</body>
+</html>
